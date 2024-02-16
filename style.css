@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
 /*
 Theme Name: Best and Associates LLP
 Text Domain: 
@@ -6,37 +8,40 @@ Author: Christopher Rinehart
 Author URI: https://linkedin.com/chris-m-rinehart
 */
 :root {
-    --best-purple: #372f34;
+    --best-purple: #382f34;
     --best-pink: #cb30b6;
     --other-purple: #573349;
     --orange: #fcb707;
     --soft-white: #baa9cc;
     --text: #000;
+    --shade: rgba(0, 0, 0, .1);
   }
 
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+#main {
+    background: var(--best-purple) url(images/page.jpeg) no-repeat scroll;
+    margin: 0 auto;
+    font-size: 1.7rem;
     font-family: 'Fira Code', sans-serif;
-    text-decoration: none;
+    font-weight: 400;
+    width: 100%;
+    min-height: 100%;
+    left: 0;
+    top: 0;
+    cursor: default;
+    overflow: hidden
 }
 
 body {
-    height: 150vh;
-    background-color: #000;
-    background-image: url("https://images.pexels.com/photos/11531609/pexels-photo-11531609.jpeg?cs=srgb&dl=pexels-trev-adams-11531609.jpg&fm=jpg");
+    min-height: 100vh;
+    background: 
+    url("https://images.pexels.com/photos/11531609/pexels-photo-11531609.jpeg?cs=srgb&dl=pexels-trev-adams-11531609.jpg&fm=jpg")
+    no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 html {
     scroll-behavior: smooth;
-}
-
-li {
-    list-style: none;
-    padding: 0 auto;
 }
 
 a {
@@ -46,7 +51,7 @@ a {
     font-size: 1.5rem;
 }
 
-a:after {
+a::after {
     content: "";
     position: absolute;
     background-color: #fff;
@@ -58,57 +63,116 @@ a:after {
 }
 
 a:hover {
-    color: #fff;;
+    color: var(--best-purple);
 }
 
-a:hover:after {
+a:hover::after {
     width: 100%;
 }
 
-/* HEADER */
 h1 {
-    opacity: 92%;
     position: fixed;
-    background-color: var(--other-purple);
-    width: 100%;
-    height: 50px;
-    align-items: center;
-    text-align: right;
+    
 }
-
-h2 {
+/* HEADER */
+.header {
     position: fixed;
-    text-align: left;
-    margin-top: 5px;
-    margin-left: 20px;
-}
-
-.navbar {
-    opacity: 92%;
-    margin-top: 50px;
-    position: fixed;
-    background-color: var(--soft-white);
+    top: 20px;
+    left: 0;
     width: 100%;
-    height: 140px;
+    padding: 1.3rem 10%;
     display: flex;
-    align-items: center;
-    text-align: right;
     justify-content: space-between;
+    align-items: center;
+    z-index: 100;
 }
 
-.navbar .logo a {
-    font-size: 1rem;
-    font-weight: bold;
+.header::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--shade);
+    backdrop-filter: blur(50px);
+    z-index: -1;
 }
 
-.navbar .links {
-    display: flex;
-    gap: 4rem;
-    margin-right: 10px;
-    font-weight: bold;
+.header::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--shade), var(--other-purple), var(--shade));
+    transition: .4s;
 }
 
-.container {
-    width: 1140px;
-    margin: 0 auto;
+.header:hover::after {
+    left: 100%;
+}
+
+.logo {
+    font-size: 2rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.navbar a{
+    font-size: 1.15rem;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+}
+
+#check {
+    display: none;
+}
+
+.icons {
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+/* BREAKPOINTS */
+@media (max-width: 1700px) {
+    .header {
+        padding: 1.3rem 5%;
+    }
+}
+
+@media (max-width: 1490px) {
+    .icons {
+        display: inline-flex;
+    }
+
+    .icons #close-icons {
+        display: none;
+
+    }
+
+    .navbar {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        height: 17.7rem;
+        background: var(--shade);
+        backdrop-filter: blur(50px);
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+    }
 }
