@@ -8,171 +8,148 @@ Author: Christopher Rinehart
 Author URI: https://linkedin.com/chris-m-rinehart
 */
 :root {
-    --best-purple: #382f34;
+    --best-purple: #382e33;
     --best-pink: #cb30b6;
-    --other-purple: #573349;
+    --best-purple2: #6e415d;
     --orange: #fcb707;
-    --soft-white: #baa9cc;
-    --text: #000;
-    --shade: rgba(0, 0, 0, .1);
+    --headerbg: #baa9cc;
+    --text: #2b2b2b;
+    --shade: rgba(0, 0, 0, .15);
   }
 
-#main {
-    background: var(--best-purple) url(images/page.jpeg) no-repeat scroll;
-    margin: 0 auto;
-    font-size: 1.7rem;
-    font-family: 'Fira Code', sans-serif;
-    font-weight: 400;
-    width: 100%;
-    min-height: 100%;
-    left: 0;
-    top: 0;
-    cursor: default;
-    overflow: hidden
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Fira Code', sans-serif;
 }
 
-body {
-    min-height: 100vh;
-    background: 
-    url("https://images.pexels.com/photos/11531609/pexels-photo-11531609.jpeg?cs=srgb&dl=pexels-trev-adams-11531609.jpg&fm=jpg")
-    no-repeat;
-    background-size: cover;
-    background-position: center;
+/*
+h1, h2, h3, h4 {
+    color: var(--best-purple2);
+    font-weight: 500;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-a {
-    text-decoration: none;
-    position: relative;
-    color: var(--text-color);
-    font-size: 1.5rem;
+*/
+
+
+/* ---------------- LAYOUT ------------------*/
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-a::after {
-    content: "";
-    position: absolute;
-    background-color: #fff;
-    height: 3px;
-    width: 0;
-    left: 0;
-    bottom: -7px;
-    transition: 0.3s;
-}
-
-a:hover {
-    color: var(--best-purple);
-}
-
-a:hover::after {
-    width: 100%;
-}
-
-h1 {
+.nav {
     position: fixed;
-    
-}
-/* HEADER */
-.header {
-    position: fixed;
-    top: 20px;
+    background-color: var(--headerbg);
+    top: 0;
     left: 0;
-    width: 100%;
-    padding: 1.3rem 10%;
+    right: 0;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    padding: 20px 0;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
 
-.header::before {
-    content: '';
+.nav ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 7px 15px;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.nav.active {
+    background-color: #fff;
+    box-shadow: 0 2px 10px var(--shade);
+}
+
+.nav.active a {
+    color: #000;
+}
+
+.nav.active .container {
+    padding: 10px 0;
+}
+
+.nav a.current,
+.nav a:hover {
+    color: #c0392b;
+    font-weight: bold;
+}
+  
+.hero {
+    background-image: url("/assets/images/scenes/philly-sunset.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+    z-index: -2;
+}
+
+.hero::before {
+    content: "";
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--shade);
-    backdrop-filter: blur(50px);
+    background-color: var(--shade);
     z-index: -1;
 }
 
-.header::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, var(--shade), var(--other-purple), var(--shade));
-    transition: .4s;
+.hero h1 {
+    font-size: 46px;
+    margin: -20px 0 20px;
 }
 
-.header:hover::after {
-    left: 100%;
+.hero p {
+    font-size: 20px;
+    letter-spacing: 1px;
 }
 
-.logo {
-    font-size: 2rem;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
+.content h2,
+.content h3 {
+    font-size: 150%;
+    margin: 10px 0;
 }
 
-.navbar a{
-    font-size: 1.15rem;
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 2.5rem;
-}
-
-#check {
-    display: none;
-}
-
-.icons {
-    position: absolute;
-    right: 5%;
-    font-size: 2.8rem;
-    color: #fff;
-    cursor: pointer;
-    display: none;
-}
-
-/* BREAKPOINTS */
-@media (max-width: 1700px) {
-    .header {
-        padding: 1.3rem 5%;
-    }
-}
-
-@media (max-width: 1490px) {
-    .icons {
-        display: inline-flex;
-    }
-
-    .icons #close-icons {
-        display: none;
-
-    }
-
-    .navbar {
-        position: absolute;
-        top: 20px;
-        left: 0;
-        width: 100%;
-        height: 17.7rem;
-        background: var(--shade);
-        backdrop-filter: blur(50px);
-    }
-
-    .navbar a {
-        display: block;
-        font-size: 1.1rem;
-        margin: 1.5rem 0;
-        text-align: center;
-    }
+.content p {
+    color: #555;
+    line-height: 30px;
+    letter-spacing: 1.2px;
 }
