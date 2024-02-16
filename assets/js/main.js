@@ -5,15 +5,14 @@ let navLinks = document.querySelectorAll('header nav a');
 window.onscroll = () => {
     sections.forEach(sec => {
       let top = window.scrollY;
-      let offset = sec.offsetTop;
+      let offset = sec.offsetTop - 150;
       let height = sec.offsetHeight;
       let id = sec.getAttribute('id');
 
       if(top >= offset && top < offset + height) {
         navLinks.forEach(links => {
-          links.classList.remove('active');
-          document.querySelector('header nav a [href*=' + id + ']').classList
-          .add('active');
+          links.classList.remove('current');
+          document.querySelector('header nav a [href*=' + id + ']').classList.add('current');
         });
       };
     });
@@ -22,10 +21,10 @@ window.onscroll = () => {
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    document.getElementById("logo").style.height = "30px";
+  if (document.body.scrollY > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("header").style.flexShrink();
   } else {
-    document.getElementById("logo").style.height = "90px";
+    document.getElementById("header").style.fontSize = "90px";
   }
 }
 
