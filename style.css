@@ -11,10 +11,11 @@ Author URI: https://linkedin.com/chris-m-rinehart
     --best-purple: #382e33;
     --best-pink: #cb30b6;
     --best-purple2: #6e415d;
-    --active: #213dc8;
+    --active: #4225ac;
     --headerbg: #baa9cc;
     --text: #2b2b2b;
     --shade: rgba(0, 0, 0, .15);
+    --bestlaw-shade: rgba(56, 46, 51, .6);
   }
 
 * {
@@ -26,10 +27,6 @@ Author URI: https://linkedin.com/chris-m-rinehart
 
 html {
     scroll-behavior: smooth;
-}
-
-p {
-    max-width: 812px;
 }
 
 /* ---------------- LAYOUT ------------------*/
@@ -92,6 +89,33 @@ p {
     transition: 0.3s;
 }
 
+.nav li {
+    list-style-type: none;
+    position: relative;
+}
+
+.nav .sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: black;
+}
+
+.nav .sub-menu a {
+    padding: 5px 10px;
+    color: #FFF;
+    background: black;
+}
+
+.nav li:hover > .sub-menu {
+    display: block;
+    animation-name: fade-in;
+    animation-duration: .3s;
+}
+
 .nav.active .container {
     padding: 10px 0;
 }
@@ -105,7 +129,6 @@ p {
 .nav a.active {
     color: var(--active);
     font-weight: bold;
-    text-decoration-line: underline;
 }
 .nav a:after {    
     background: none repeat scroll 0 0 transparent;
@@ -124,11 +147,11 @@ p {
     left: 0; 
 }
 .hero {
-    background-image: url("/assets/images/scenes/philly-sunset.jpg");
+    background-image: url("/assets/images/scenes/philly-skyline-unsplash.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
-    height: 100vh;
+    height: 140vh;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -150,14 +173,9 @@ p {
     z-index: -1;
 }
 
-.hero h1 {
-    font-size: 46px;
-    margin: -20px 0 20px;
-}
-
 .hero p {
-    font-size: 20px;
-    letter-spacing: 1px;
+    background-color: var(--bestlaw-shade);
+    font-size: 36px;
 }
 
 .content h2,
@@ -202,8 +220,91 @@ section:nth-child(odd) {
     background: var(--best-purple2);
 }
 
+.imagecarousel {
+    position: relative;
+    height: 455px;
+    margin-bottom: 30px;
+    display: inline-flex;
+    width: fit-content;
+    gap: 20px;
+    z-index: -5;
+  }
+  
+  .imagecarousel img {
+    margin: 0px 0px;
+    box-shadow: 2px 2px 8px #313030;
+  }
+  
+  .imagecarousel {
+    animation: bannermove 50s linear infinite;
+  }
+
+
+.bio-container {
+    background-color: var(--headerbg);
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
+    gap: 20px; /* Adjust the space between columns */
+}
+  
+.bio {
+    display: flex;
+    flex-direction: column; /* Aligns the bio content vertically */
+    align-items: center; /* Center-aligns the items horizontally */
+}
+  
+.bio-left .bio-image-top, .bio-right .bio-image-bottom {
+    order: 1; /* Places these images at the top or bottom as required */
+}
+  
+.bio-left .bio-text, .bio-right .bio-text {
+    order: 2; /* Places the text in the middle */
+}
+  
+.bio-left .bio-image-bottom, .bio-right .bio-image-top {
+    order: 3;
+}
+  
+.bio-image-top, .bio-image-bottom {
+    width: 100%; /* Adjusts the width of the image to fit the container */
+    max-width: 200px; /* Maximum width of the image */
+    height: auto; /* Adjusts the height to maintain aspect ratio */
+    margin: 10px 0; /* Adds space above and below the image */
+}
+  
+.bio-text {
+    text-align: center; /* Centers the text */
+}
+  
+.bio-text h3, .bio-text p {
+    margin: 5px 0; /* Adjusts spacing around the text */
+}
+  
+
+
+/* -------- @'s ---------- */
+
 @media screen and (max-height: 300px) {
 	ul {
 		margin-top: 40px;
 	}
 }
+
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fade-out {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes bannermove {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }

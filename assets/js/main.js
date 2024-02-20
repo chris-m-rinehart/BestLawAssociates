@@ -27,7 +27,3 @@ function scrollFunction() {
     document.getElementById("header").style.fontSize = "90px";
   }
 }
-
-function redirectToEOIR() {
-    window.location.href = 'https://acis.eoir.justice.gov/en/';
-}
