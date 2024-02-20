@@ -41,11 +41,7 @@ html {
     top: 60px;
     left: 0;
     right: 0;
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
+    animation: 1s ease-out 0s 1 slideInLeft;
 }
 
 .nav .container {
@@ -53,11 +49,7 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    transition: all 0.4s ease-in-out;
-    -webkit-transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -ms-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
+    animation: 1s ease-out 0s 1 slideInLeft;
 }
 
 .nav ul {
@@ -98,22 +90,27 @@ html {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    width: 100%;
+    width: 125% ;
+    right: -15%;
     z-index: 1000;
-    background: black;
+    background: var(--headerbg);
+}
+
+.nav ul.sub-menu {
+    border: 4px solid var(--best-purple2);
 }
 
 .nav .sub-menu a {
     padding: 5px 10px;
-    color: #FFF;
-    background: black;
+    color: var(--text);
+    background: var(--headerbg);
 }
 
 .nav li:hover > .sub-menu {
+    text-align: center;
     display: block;
     animation-name: fade-in;
-    animation-duration: .3s;
+    animation-duration: .7s;
 }
 
 .nav.active .container {
@@ -174,6 +171,8 @@ html {
 }
 
 .hero p {
+    animation: 2s ease-out 0s 1 fade-in;
+    line-break: auto;
     background-color: var(--bestlaw-shade);
     font-size: 36px;
 }
@@ -197,6 +196,7 @@ html {
     width: 100%;
     height: 60px;
     background-color: var(--best-purple2);
+    animation: 1s ease-out 0s 1 slideInLeft;
 }
 
 .gtranslate_wrapper {
@@ -236,50 +236,53 @@ section:nth-child(odd) {
   }
   
   .imagecarousel {
-    animation: bannermove 50s linear infinite;
+    animation: bannermove 35s linear infinite;
   }
 
-
-.bio-container {
+  .bio-container {
     background-color: var(--headerbg);
     display: grid;
     grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
     gap: 20px; /* Adjust the space between columns */
-}
+    min-height: 1200px;
+  }
   
-.bio {
+  .bio {
     display: flex;
     flex-direction: column; /* Aligns the bio content vertically */
     align-items: center; /* Center-aligns the items horizontally */
-}
+  }
   
-.bio-left .bio-image-top, .bio-right .bio-image-bottom {
+  .bio-left .bio-image-top, .bio-right .bio-image-bottom {
     order: 1; /* Places these images at the top or bottom as required */
-}
+  }
   
-.bio-left .bio-text, .bio-right .bio-text {
+  .bio-left .bio-text, .bio-right .bio-text {
     order: 2; /* Places the text in the middle */
-}
+  }
   
-.bio-left .bio-image-bottom, .bio-right .bio-image-top {
+  .bio-left .bio-image-bottom, .bio-right .bio-image-top {
     order: 3;
-}
+  }
   
-.bio-image-top, .bio-image-bottom {
+  .bio-image-top, .bio-image-bottom {
     width: 100%; /* Adjusts the width of the image to fit the container */
     max-width: 200px; /* Maximum width of the image */
     height: auto; /* Adjusts the height to maintain aspect ratio */
     margin: 10px 0; /* Adds space above and below the image */
-}
+  }
   
-.bio-text {
-    text-align: center; /* Centers the text */
-}
-  
-.bio-text h3, .bio-text p {
+  .bio-text {
+    font-size: 20px;
+    text-align: left; /* Centers the text */
+  }
+  .bio-text h3 {
+    text-align: center;
+  }
+
+  .bio-text h3, .bio-text p {
     margin: 5px 0; /* Adjusts spacing around the text */
-}
-  
+  }
 
 
 /* -------- @'s ---------- */
@@ -295,6 +298,18 @@ section:nth-child(odd) {
     to {opacity: 1;}
 }
 
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Starts 20px below its final position */
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0); /* Moves to its final position */
+      }
+    
+}
+
 @keyframes fade-out {
     from {opacity: 1;}
     to {opacity: 0;}
@@ -307,4 +322,22 @@ section:nth-child(odd) {
     100% {
       transform: translateX(-50%);
     }
-  }
+}
+
+@keyframes slideInLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+  
+@keyframes slideInRight {
+    100% {
+      transform: translateX(0%);
+    }
+    0% {
+      transform: translateX(100%);
+    }
+}
