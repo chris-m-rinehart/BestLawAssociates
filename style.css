@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 /*
 Theme Name: Best and Associates LLP
 Text Domain: 
@@ -9,6 +10,7 @@ Author URI: https://linkedin.com/chris-m-rinehart
 */
 :root {
     --best-purple: #382e33;
+    --best-purple-grad: radial-gradient(circle, rgba(56,46,51,1) 35%, rgba(110,65,93,1) 100%);
     --best-pink: #cb30b6;
     --best-purple2: #6e415d;
     --active: #4225ac;
@@ -37,11 +39,12 @@ html {
 
 .nav {
     position: fixed;
-    background-color: var(--headerbg);
+    background: rgb(139,129,214);
+    background: linear-gradient(270deg, rgba(139,129,214,1) 27%, rgba(237,177,245,1) 100%);
     top: 60px;
     left: 0;
     right: 0;
-    animation: 1s ease-out 0s 1 slideInLeft;
+    animation: 1s ease-out 0s 1 fade-in;
 }
 
 .nav .container {
@@ -49,7 +52,7 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    animation: 1s ease-out 0s 1 slideInLeft;
+    animation: 1s ease-out 0s 1 fade-in;
 }
 
 .nav ul {
@@ -139,10 +142,12 @@ html {
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }
+
 .nav a:hover:after { 
     width: 100%; 
     left: 0; 
 }
+
 .hero {
     background-image: url("/assets/images/scenes/philly-skyline-unsplash.jpg");
     background-repeat: no-repeat;
@@ -196,7 +201,7 @@ html {
     width: 100%;
     height: 60px;
     background-color: var(--best-purple2);
-    animation: 1s ease-out 0s 1 slideInLeft;
+    animation: 1s ease-out 0s 1 fade-in;
 }
 
 .gtranslate_wrapper {
@@ -210,14 +215,14 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--text);
+    background: var(--best-purple-grad);
     font-size: 36px;
     color: #fff;
     font-weight: 700;
 }
 
 section:nth-child(odd) {
-    background: var(--best-purple2);
+    background: var(--best-purple-grad);
 }
 
 .imagecarousel {
@@ -228,63 +233,65 @@ section:nth-child(odd) {
     width: fit-content;
     gap: 20px;
     z-index: -5;
-  }
+}
   
-  .imagecarousel img {
+.imagecarousel img {
     margin: 0px 0px;
     box-shadow: 2px 2px 8px #313030;
-  }
+}
   
-  .imagecarousel {
+.imagecarousel {
     animation: bannermove 35s linear infinite;
-  }
+}
 
-  .bio-container {
-    background-color: var(--headerbg);
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
-    gap: 20px; /* Adjust the space between columns */
-    min-height: 1200px;
-  }
+.bio-container {
+    display: flexbox;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: space-evenly;
+    min-height: 1600px;
+}
   
-  .bio {
+.bio {
     display: flex;
     flex-direction: column; /* Aligns the bio content vertically */
     align-items: center; /* Center-aligns the items horizontally */
-  }
+}
   
-  .bio-left .bio-image-top, .bio-right .bio-image-bottom {
-    order: 1; /* Places these images at the top or bottom as required */
-  }
+.bio-image {
+    margin-top: 40px;
+}
   
-  .bio-left .bio-text, .bio-right .bio-text {
-    order: 2; /* Places the text in the middle */
-  }
-  
-  .bio-left .bio-image-bottom, .bio-right .bio-image-top {
-    order: 3;
-  }
-  
-  .bio-image-top, .bio-image-bottom {
-    width: 100%; /* Adjusts the width of the image to fit the container */
-    max-width: 200px; /* Maximum width of the image */
-    height: auto; /* Adjusts the height to maintain aspect ratio */
-    margin: 10px 0; /* Adds space above and below the image */
-  }
-  
-  .bio-text {
+.bio-text {
     font-size: 20px;
     text-align: left; /* Centers the text */
-  }
-  .bio-text h3 {
+}
+
+.bio-text h3 {
     text-align: center;
-  }
+}
 
-  .bio-text h3, .bio-text p {
-    margin: 5px 0; /* Adjusts spacing around the text */
-  }
+.bio-text h3, .bio-text p {
+    margin: 5px 0 auto; /* Adjusts spacing around the text */
+}
 
+#map {
+  height: 100%;
+  margin-bottom: 40px;
+}
 
+#footer-right {
+  margin-right: 40px;
+}
+
+footer {
+  width: 100%;
+  background: rgb(72,47,77);
+  background: linear-gradient(90deg, rgba(72,47,77,1) 35%, rgba(237,177,245,1) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
 /* -------- @'s ---------- */
 
 @media screen and (max-height: 300px) {
