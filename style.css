@@ -15,13 +15,13 @@ Author URI: https://linkedin.com/chris-m-rinehart
     --best-purple2: #6e415d;
     --active: #4225ac;
     --headerbg: #baa9cc;
+    --textbox-bg: #b38fda;
     --text: #2b2b2b;
     --shade: rgba(0, 0, 0, .15);
     --bestlaw-shade: rgba(56, 46, 51, .6);
   }
 
 * {
-	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 	font-family: 'Fira Code', sans-serif;
@@ -67,6 +67,7 @@ html {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     text-decoration: none;
+    text-align: center;
 
     display: inline-block;
     padding: 15px 22px;
@@ -82,6 +83,7 @@ html {
     background-color: var(--headerbg);
     box-shadow: 0 2px 10px var(--shade);
     transition: 0.3s;
+    text-align: center;
 }
 
 .nav li {
@@ -92,6 +94,7 @@ html {
 .nav .sub-menu {
     display: none;
     position: absolute;
+    text-align: center;
     top: 100%;
     width: 125% ;
     right: -15%;
@@ -107,6 +110,7 @@ html {
     padding: 5px 10px;
     color: var(--text);
     background: var(--headerbg);
+    text-align: center;
 }
 
 .nav li:hover > .sub-menu {
@@ -114,10 +118,6 @@ html {
     display: block;
     animation-name: fade-in;
     animation-duration: .7s;
-}
-
-.nav.active .container {
-    padding: 10px 0;
 }
 
 .nav a:hover,
@@ -235,6 +235,11 @@ section:nth-child(odd) {
     z-index: -5;
 }
   
+.carousel {
+    padding: 0 60px;
+    height: 1000px;
+    background-color: var(--headerbg);
+}
 .imagecarousel img {
     margin: 0px 0px;
     box-shadow: 2px 2px 8px #313030;
@@ -245,14 +250,16 @@ section:nth-child(odd) {
 }
 
 .bio-container {
+    padding: 0 80px;
     display: flexbox;
     flex-direction: column;
     align-items: stretch;
     align-content: space-evenly;
-    min-height: 1600px;
+    min-height: 1800px;
 }
   
 .bio {
+    background-color: var(--headerbg);
     display: flex;
     flex-direction: column; /* Aligns the bio content vertically */
     align-items: center; /* Center-aligns the items horizontally */
@@ -263,14 +270,26 @@ section:nth-child(odd) {
 }
   
 .bio-text {
-    font-size: 20px;
-    text-align: left; /* Centers the text */
+    font-size: 22px;
+    text-align: center; /* Centers the text */
+    padding: 0 10px;
+    background-color: var(--textbox-bg);
+}
+.bio-right {
+    background-color: var(--textbox-bg);
+}
+.bio-left {
+    margin-top: 60px;
+    background-color: var(--textbox-bg);
 }
 
 .bio-text h3 {
     text-align: center;
 }
 
+.bio-text h4{
+    color: var(--active);
+}
 .bio-text h3, .bio-text p {
     margin: 5px 0 auto; /* Adjusts spacing around the text */
 }
@@ -292,6 +311,12 @@ footer {
   text-align: center;
   padding: 10px 0;
 }
+
+.services-container {
+    
+}
+
+
 /* -------- @'s ---------- */
 
 @media screen and (max-height: 300px) {
