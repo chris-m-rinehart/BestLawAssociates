@@ -58,3 +58,48 @@ async function initMap() {
 }
 
 initMap();
+
+$(document).ready(function(){
+  // Smooth scrolling for internal links
+  $('a[href^="#"]').on('click', function(event) {
+      var target = $(this.getAttribute('href'));
+      if( target.length ) {
+          event.preventDefault();
+          $('html, body').stop().animate({
+              scrollTop: target.offset().top
+          }, 1000);
+      }
+  });
+});
+
+$(document).ready(function(){
+  // Dropdown animation
+  $('.nav li').hover(function() {
+      $(this).children('.sub-menu').stop(true, false, true).slideDown(200);
+  }, function() {
+      $(this).children('.sub-menu').stop(true, false, true).slideUp(200);
+  });
+});
+
+$(document).ready(function(){
+  // Form validation
+  $('#contact-form').submit(function(event) {
+      var form = $(this);
+      var formData = form.serialize();
+      // Perform form validation here
+      if (/* Validation passes */) {
+          $.ajax({
+              type: 'POST',
+              url: form.attr('action'),
+              data: formData
+          })
+          .done(function(response) {
+              // Handle success
+          })
+          .fail(function(data) {
+              // Handle error
+          });
+      }
+      event.preventDefault();
+  });
+});
